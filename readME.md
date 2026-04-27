@@ -6,7 +6,7 @@ Student: Alexander Frieders | Repo: `WEB-115_FinalProject_Frieders`
 
 ## Overview
 
-This is a website that allows users to create and store self made dad jokes for later usage. Say somebody comes up with a joke on the spot, and dosen't want to forget it. With the help of my website, they will be able to type in the `setup` of the joke and `punchline` of the joke, and click `save` to put it into their `localStorage`, after which at any point they will be able to click a "Pull random joke" button and pull one of many jokes that they saved over time for a quick laugh. If the user ever wants to start over with a new repertoire of jokes, they can clear the `localStorage` and continue adding fresh new jokes.
+This is a website that allows users to create and store self made dad jokes for later usage. Say somebody comes up with a joke on the spot, and dosen't want to forget it. With the help of my website, they will be able to type in the `setup` of the joke and `punchline` of the joke, and click `save` to put it into their `localStorage`, after which at any point they will be able to click a "Pull random joke" button and pull one of many jokes that they saved over time for a quick laugh. If the user ever wants to start over with a new repertoire of jokes, they can clear the `localStorage` and continue adding fresh new jokes. For testing, or just to see all of the currently stored jokes, the use can click a "Show all jokes button" that will show every single joke in the current `localStorage`.
 
 ---
 
