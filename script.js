@@ -43,6 +43,28 @@ document.getElementById("loadAllData").addEventListener("click", function() {
     document.body.appendChild(outputContainer);
 });
 
+document.getElementById("randomJoke").addEventListener("click", function() {
+    const savedJokes = getSavedJokes();
+
+    if (savedJokes.length === 0) {
+        alert("No jokes found in local storage.");
+        return;
+    }
+
+    const randomIndex = Math.floor(Math.random() * savedJokes.length);
+    const randomJoke = savedJokes[randomIndex];
+
+    const outputContainer = document.getElementById("jokeList") || document.createElement("div");
+    outputContainer.id = "jokeList";
+    outputContainer.innerHTML = "";
+
+    const dataElement = document.createElement("p");
+    dataElement.textContent = `Random Joke: ${randomJoke.prompt} — ${randomJoke.punchLine}`;
+    outputContainer.appendChild(dataElement);
+
+    document.body.appendChild(outputContainer);
+});
+
 document.getElementById("clearData").addEventListener("click", function() {
     localStorage.removeItem("jokes");
     document.getElementsByName("jokePrompt")[0].value = "";
