@@ -1,9 +1,9 @@
-const prompt = document.getElementsByName("jokePrompt")[0].value;
-const punchLine = document.getElementsByName("jokePunchLine")[0].value;
-const formData = { prompt, punchLine };
+function getSavedJokes() {
+    return JSON.parse(localStorage.getItem("jokes") || "[]");
+}
 
 document.getElementById("userForm").addEventListener("submit", function(event) {
-    event.preventDefault(); // Prevent form submission
+    event.preventDefault();
 
     const prompt = document.getElementsByName("jokePrompt")[0].value;
     const punchLine = document.getElementsByName("jokePunchLine")[0].value;
@@ -12,35 +12,44 @@ document.getElementById("userForm").addEventListener("submit", function(event) {
         alert("Please fill in all fields.");
         return;
     }
-    // Proceed with form submission or further processing
 
-    const formData = { prompt, punchLine };
+    const jokes = getSavedJokes();
+    jokes.push({ prompt, punchLine });
+    localStorage.setItem("jokes", JSON.stringify(jokes));
 
-    localStorage.setItem("formData", JSON.stringify(formData));
-
-    alert("Form submitted successfully");
+    alert("Joke saved successfully.");
     document.getElementsByName("jokePrompt")[0].value = "";
     document.getElementsByName("jokePunchLine")[0].value = "";
-
 });
 
+document.getElementById("loadAllData").addEventListener("click", function() {
+    const savedJokes = getSavedJokes();
 
-document.getElementById("loadData").addEventListener("click", function() {
-    const savedData = localStorage.getItem("formData");
-
-    if (savedData) {
-        const formData = JSON.parse(savedData);
-        const dataElement = document.createElement("p");
-        dataElement.textContent = `Prompt: ${formData.prompt}, Punch Line: ${formData.punchLine}`;
-        document.body.appendChild(dataElement);
-    } else {
-        alert("No data found in local storage.");
+    if (savedJokes.length === 0) {
+        alert("No jokes found in local storage.");
+        return;
     }
+
+    const outputContainer = document.getElementById("jokeList") || document.createElement("div");
+    outputContainer.id = "jokeList";
+    outputContainer.innerHTML = "";
+
+    savedJokes.forEach((joke, index) => {
+        const dataElement = document.createElement("p");
+        dataElement.textContent = `${index + 1}. Prompt: ${joke.prompt} — Punch Line: ${joke.punchLine}`;
+        outputContainer.appendChild(dataElement);
+    });
+
+    document.body.appendChild(outputContainer);
 });
 
 document.getElementById("clearData").addEventListener("click", function() {
-    localStorage.removeItem("formData");
+    localStorage.removeItem("jokes");
     document.getElementsByName("jokePrompt")[0].value = "";
     document.getElementsByName("jokePunchLine")[0].value = "";
-    alert("Data cleared from local storage.");
+    const outputContainer = document.getElementById("jokeList");
+    if (outputContainer) {
+        outputContainer.remove();
+    }
+    alert("All jokes cleared from local storage.");
 });
