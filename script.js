@@ -38,9 +38,9 @@ document.getElementById("loadAllData").addEventListener("click", function() {
         const dataElement = document.createElement("p");
         dataElement.textContent = `${index + 1}. Prompt: ${joke.prompt} — Punch Line: ${joke.punchLine}`;
         outputContainer.appendChild(dataElement);
+        document.body.appendChild(outputContainer);
     });
 
-    document.body.appendChild(outputContainer);
 });
 
 document.getElementById("randomJoke").addEventListener("click", function() {
