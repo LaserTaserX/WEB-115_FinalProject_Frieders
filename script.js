@@ -47,8 +47,7 @@ document.getElementById("loadAllData").addEventListener("click", function() {
         return;
     }
 
-    const outputContainer = document.getElementById("jokeList") || document.createElement("div");
-    outputContainer.id = "jokeList";
+    const outputContainer = document.getElementById("jokeDisplay");
     outputContainer.innerHTML = "";
 
     savedJokes.forEach((joke, index) => {
@@ -56,7 +55,6 @@ document.getElementById("loadAllData").addEventListener("click", function() {
         dataElement.textContent = `${index + 1}. [${joke.jokeClass}] Prompt: ${joke.prompt} — Punch Line: ${joke.punchLine}`;
         
         outputContainer.appendChild(dataElement);
-        document.body.appendChild(outputContainer);
     });
 
 });
@@ -72,8 +70,7 @@ document.getElementById("randomJoke").addEventListener("click", function() {
     const randomIndex = Math.floor(Math.random() * savedJokes.length);
     const randomJoke = savedJokes[randomIndex];
 
-    const outputContainer = document.getElementById("jokeList") || document.createElement("div");
-    outputContainer.id = "jokeList";
+    const outputContainer = document.getElementById("jokeDisplay");
     outputContainer.innerHTML = "";
 
     const dataElement = document.createElement("p");
@@ -84,18 +81,14 @@ document.getElementById("randomJoke").addEventListener("click", function() {
     dataElement.classList.add(className);
     
     outputContainer.appendChild(dataElement);
-
-    document.body.appendChild(outputContainer);
 });
 
 document.getElementById("clearData").addEventListener("click", function() {
     localStorage.removeItem("jokes");
     document.getElementsByName("jokePrompt")[0].value = "";
     document.getElementsByName("jokePunchLine")[0].value = "";
-    const outputContainer = document.getElementById("jokeList");
-    if (outputContainer) {
-        outputContainer.remove();
-    }
+    const outputContainer = document.getElementById("jokeDisplay");
+    outputContainer.innerHTML = "";
     alert("All jokes cleared from local storage.");
 });
 

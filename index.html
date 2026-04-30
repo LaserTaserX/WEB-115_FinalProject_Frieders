@@ -9,23 +9,29 @@
 </head>
 <body>
     
-    <form id="userForm">
-        <label for="jokePrompt">Joke:</label>
-        <input type="text" id="jokePrompt" name="jokePrompt"><br><br>
-        <label for="jokePunchLine">Punchline:</label>
-        <input type="text" id="jokePunchLine" name="jokePunchLine"><br><br>
-        <label for="jokeClass">Joke Class:</label>
-        <select id="jokeClass" name="jokeClass">
-            <option value="Dad">Dad Joke</option>
-            <option value="Knock-Knock">Knock-Knock Joke</option>
-            <option value="One-Liner">One-Liner</option>
-        </select><br><br>
-        <button type="submit">Save Joke</button>
-    </form>
+    <div id="container">
+        <div id="buttonGroup">
+            <button id="randomJoke">Get Random Joke</button>
+            <button id="loadAllData">Show All Jokes</button>
+            <button id="clearData">Clear Joke Data</button>
+        </div>
 
-    <button id="randomJoke">Get Random Joke</button>
-    <button id="loadAllData">Show All Jokes</button>
-    <button id="clearData">Clear Joke Data</button>
+        <div id="jokeDisplay"></div>
+
+        <form id="userForm">
+            <label for="jokePrompt">Joke:</label>
+            <input type="text" id="jokePrompt" name="jokePrompt"><br><br>
+            <label for="jokePunchLine">Punchline:</label>
+            <input type="text" id="jokePunchLine" name="jokePunchLine"><br><br>
+            <label for="jokeClass">Joke Class:</label>
+            <select id="jokeClass" name="jokeClass">
+                <option value="Dad">Dad Joke</option>
+                <option value="Knock-Knock">Knock-Knock Joke</option>
+                <option value="One-Liner">One-Liner</option>
+            </select><br><br>
+            <button type="submit">Save Joke</button>
+        </form>
+    </div>
 
     <script src="script.js" defer></script>
 </body>
