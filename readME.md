@@ -46,3 +46,6 @@ The `localStorage` will store jokes so that the user can leave and return to the
 - HTML, CSS, JavaScript
 - localStorage
 - VS Code + GitHub
+
+## Live Site Link
+[https://lasertaserx.github.io/WEB-115_FinalProject_Frieders/](url)
